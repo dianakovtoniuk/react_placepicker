@@ -1,8 +1,22 @@
-export default function Places({ title, places, fallbackText, onSelectPlace }) {
+import type { Place } from '../types';
+
+type PlacesProps = {
+  title: string;
+  places: Place[];
+  fallbackText: string;
+  onSelectPlace: (id: string) => void;
+};
+
+export default function Places({
+  title,
+  places,
+  fallbackText,
+  onSelectPlace,
+}: PlacesProps) {
   return (
     <section className="places-category">
       <h2>{title}</h2>
-      {places.length === 0 && <p className='fallback-text'>{fallbackText}</p>}
+      {places.length === 0 && <p className="fallback-text">{fallbackText}</p>}
       {places.length > 0 && (
         <ul className="places">
           {places.map((place) => (
